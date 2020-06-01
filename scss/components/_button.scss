@@ -1,0 +1,52 @@
+button.btn,
+a.btn {
+  display: flex;
+  min-width: 150px;
+  padding: 1rem 0;
+
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+
+  color: $color_black;
+  font-family: $font_secondary;
+  font-size: 175%;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+
+  &--black {
+    background-color: $color_black;
+    color: $color_white;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color_black;
+    }
+  }
+
+  &--red {
+    background-color: $color_red;
+    color: $color_white;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color_dark_red;
+    }
+  }
+
+  &--blue {
+    background-color: $color_blue;
+    color: $color_white;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color_dark_blue;
+    }
+  }
+}

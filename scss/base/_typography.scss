@@ -1,0 +1,12 @@
+body {
+  font-family: $font_primary;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color_black;
+}
+
+::selection {
+  background-color: $color_blue;
+  color: $color_white;
+}

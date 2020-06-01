@@ -1,0 +1,113 @@
+@mixin stickyNav($top: 0px) {
+  nav#top-nav {
+    position: fixed;
+    top: $top;
+    padding: 0;
+    background: #ffffff;
+
+    a.site-brand {
+      img.site-logo {
+        height: 75%;
+      }
+    }
+  }
+}
+
+body.sticky-nav {
+  &.admin-bar {
+    @include stickyNav(32px);
+  }
+
+  @include stickyNav;
+}
+
+nav#top-nav {
+  width: 100%;
+  padding: 1rem 0;
+
+  div.navbar {
+    display: flex;
+    margin: 0 3rem;
+
+    & > * {
+      flex: 1;
+      display: flex;
+      height: inherit;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  a.site-brand {
+    flex-basis: 15%;
+
+    img.site-logo {
+      width: auto;
+      height: 100%;
+      transition: height 100ms ease-in-out;
+    }
+  }
+
+  div.nav-items {
+    width: 100%;
+    flex-basis: 85%;
+    justify-content: flex-end;
+
+    // Primary menu
+    div.menu-container {
+      ul.menu {
+        display: flex;
+        width: auto;
+
+        li.menu-item {
+          &:not(:first-of-type) {
+            margin-left: 4em;
+          }
+
+          a {
+            position: relative;
+            line-height: 2;
+            color: $color_dark_blue;
+            font-family: $font_secondary;
+            font-size: 150%;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+
+            &::after {
+              content: "";
+              position: absolute;
+              display: block;
+              width: 0;
+              height: 2px;
+              background: $color_red;
+              border-radius: 4px;
+              transition: width 300ms ease-in-out;
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    // Social Media
+    ul.socials {
+      display: flex;
+      margin-left: 4rem;
+
+      li.social-item {
+        &:not(:first-of-type) {
+          margin-left: 2em;
+        }
+
+        a {
+          color: $color_dark_blue;
+          font-size: 200%;
+        }
+      }
+    }
+  }
+}

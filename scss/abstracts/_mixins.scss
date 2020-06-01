@@ -1,0 +1,19 @@
+@mixin respond-to($keys...) {
+  @each $key in $keys {
+    @if map-has-key($map: $breakpoints, $key: $key) {
+      @media screen and (max-width: map-get($map: $breakpoints, $key: $key)) {
+        @content;
+      }
+    } @else {
+      // @warn "Sorry, no value could be retrieved from \'#{$key}\'. Available breakpoints are as follows: #{map-keys($map: $breakpoints)}.";
+      @media screen and (min-width: map-get($map: $breakpoints, $key: "xl")) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin borderTopBottom($width: 1px, $style: solid, $color: transparent) {
+  border-top: $width $style $color;
+  border-bottom: $width $style $color;
+}

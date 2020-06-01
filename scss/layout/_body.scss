@@ -1,0 +1,9 @@
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-y: scroll;
+}
+
+main#main {
+  min-height: inherit;
+}

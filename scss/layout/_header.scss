@@ -1,0 +1,31 @@
+header#header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: max-content;
+  z-index: $z_header;
+  background: transparent;
+  font-size: 62.5%;
+}
+
+// Alert bar
+header#header div.alert {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 1rem;
+  max-height: max-content;
+  padding: 0.5rem 0;
+
+  align-items: center;
+  background: $color_red;
+
+  span.alert__text {
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+    color: $color_white;
+    font-size: 150%;
+    text-align: center;
+  }
+}

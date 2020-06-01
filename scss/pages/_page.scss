@@ -1,0 +1,10 @@
+div.hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  justify-content: center;
+  align-items: center;
+  background-color: $color_white;
+  background-position: center 0;
+  background-size: cover;
+}
