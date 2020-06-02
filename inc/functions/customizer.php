@@ -50,8 +50,13 @@ add_action('customize_register', 'setup_site_logo');
  */
 function get_logo_src($alt = false)
 {
-    if (!$alt) return get_theme_mod('site_logo');
-    else return get_theme_mod('site_alt_logo');
+    if (get_theme_mod('site_logo')) {
+        if (!$alt) return get_theme_mod('site_logo');
+        else return get_theme_mod('site_alt_logo');
+    } else {
+        if (!$alt) return get_template_directory_uri() . '/assets/logo.svg';
+        else return get_template_directory_uri() . '/assets/logo-white.svg';
+    }
 }
 
 function setup_alert_text($wp_customize)
@@ -124,5 +129,7 @@ add_action('customize_register', 'setup_jumbo_image');
 
 function get_jumbo_img()
 {
-    return get_theme_mod('jumbo_img');
+    if (get_theme_mod('jumbo_img'))
+        return get_theme_mod('jumbo_img');
+    else return get_template_directory_uri() . '/assets/bg.jpg';
 }
