@@ -62,17 +62,27 @@ function get_logo_src($alt = false)
  */
 function setup_alert_text($wp_customize)
 {
+    $wp_customize->add_setting('alert_toggle', array(
+        'default' => true
+    ));
+    $wp_customize->add_control('alert_toggle', array(
+        'type' => 'checkbox',
+        'label' => _('Alert Bar Toggle'),
+        'description' => _('Toggles whether or not the alert bar will be visible.'),
+        'settings' => 'alert_toggle',
+        'section' => 'header'
+    ));
+
     $wp_customize->add_setting('alert_text');
     $wp_customize->add_control('alert_text', array(
         'type' => 'textarea',
-        'label' => _('Alert Bar'),
+        'label' => _('Alert Bar Text'),
         'description' => _('Text to be displayed in the alert bar on top of the page. Leave empty for nothing. Supports HTML tags.'),
         'settings' => 'alert_text',
         'section' => 'header'
     ));
 }
 add_action('customize_register', 'setup_alert_text');
-
 /**
  * Returns the specified text for the alert bar
  */

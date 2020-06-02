@@ -3,10 +3,10 @@ jQuery(document).ready(($) => {
   let nav = $("#top-nav").offset().top;
   if ($("body").hasClass("admin-bar")) nav += 32;
 
-  if (y >= nav) $("body").addClass("sticky-nav");
+  if (y >= nav && y > 0) $("body").addClass("sticky-nav");
   $(window).scroll(function () {
     y = window.pageYOffset;
-    if (y >= nav) {
+    if (y >= nav && y > 0) {
       $("body").addClass("sticky-nav");
     } else {
       $("body").removeClass("sticky-nav");
