@@ -1,6 +1,9 @@
 <?php
 
-function setup_customizer_functions($wp_customize)
+/**
+ * Setups the theme-specific sections in the customizer
+ */
+function setup_customizer_sections($wp_customize)
 {
     $wp_customize->add_section('header', array(
         'priority' => 100,
@@ -12,8 +15,11 @@ function setup_customizer_functions($wp_customize)
         'title' => _('Front Page')
     ));
 }
-add_action('customize_register', 'setup_customizer_functions');
+add_action('customize_register', 'setup_customizer_sections');
 
+/**
+ * Setups the setting and control for the site logo
+ */
 function setup_site_logo($wp_customize)
 {
     // Default logo
@@ -33,20 +39,12 @@ function setup_site_logo($wp_customize)
         'settings' => 'site_alt_logo',
         'section' => 'header'
     )));
-
-    // Edit icon
-    $wp_customize->selective_refresh->add_partial('site_logo', array(
-        'selector' => 'a.site-link'
-    ));
 }
 add_action('customize_register', 'setup_site_logo');
 
 /**
- * Returns the URI for the site logo.
- * If no site logo is set, it will return a default fallback URI.
- * 
- * @param boolean $alt If true, the alternate site logo will be used.
- * @return string
+ * Returns the URI for the site logo
+ * If no site logo is set, it will return a default fallback URI
  */
 function get_logo_src($alt = false)
 {
@@ -59,6 +57,9 @@ function get_logo_src($alt = false)
     }
 }
 
+/**
+ * Setups the setting and control for the alert bar text and toggle
+ */
 function setup_alert_text($wp_customize)
 {
     $wp_customize->add_setting('alert_text');
@@ -69,24 +70,20 @@ function setup_alert_text($wp_customize)
         'settings' => 'alert_text',
         'section' => 'header'
     ));
-
-    // Edit icon
-    $wp_customize->selective_refresh->add_partial('alert_text', array(
-        'selector' => 'span#top-alert__text'
-    ));
 }
 add_action('customize_register', 'setup_alert_text');
 
 /**
- * Returns the specified text for the alert bar.
- * 
- * @return string
+ * Returns the specified text for the alert bar
  */
 function get_alert_text()
 {
     return get_theme_mod('alert_text');
 }
 
+/**
+ * Setups the setting and control for the donation link
+ */
 function setup_donation_url($wp_customize)
 {
     $wp_customize->add_setting('donate_url');
@@ -97,24 +94,21 @@ function setup_donation_url($wp_customize)
         'settings' => 'donate_url',
         'section' => 'header'
     ));
-
-    // Edit icon
-    $wp_customize->selective_refresh->add_partial('donate_url', array(
-        'selector' => 'a.btn-header-donate'
-    ));
 }
 add_action('customize_register', 'setup_donation_url');
 
 /**
- * Returns the donation URL.
- * 
- * @return string
+ * Returns the donation URL
+ * If no URL is set, it will link back to the site's homepage
  */
 function get_donation_url()
 {
     return get_theme_mod('donate_url');
 }
 
+/**
+ * Setups the setting and control for the front page jumbotron
+ */
 function setup_jumbo_image($wp_customize)
 {
     $wp_customize->add_setting('jumbo_img');
@@ -127,6 +121,10 @@ function setup_jumbo_image($wp_customize)
 }
 add_action('customize_register', 'setup_jumbo_image');
 
+/**
+ * Returns the jumbotron image URI
+ * If no image is uploaded, it will return the default image supplied in the theme
+ */
 function get_jumbo_img()
 {
     if (get_theme_mod('jumbo_img'))
