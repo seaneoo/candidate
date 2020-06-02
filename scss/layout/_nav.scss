@@ -10,6 +10,12 @@
         height: 75%;
       }
     }
+
+    div.nav-items {
+      a.donate {
+        display: flex;
+      }
+    }
   }
 }
 
@@ -74,20 +80,7 @@ nav#top-nav {
             text-decoration: none;
             letter-spacing: 0.5px;
 
-            &::after {
-              content: "";
-              position: absolute;
-              display: block;
-              width: 0;
-              height: 2px;
-              background: $color_red;
-              border-radius: 4px;
-              transition: width 300ms ease-in-out;
-            }
-
-            &:hover::after {
-              width: 100%;
-            }
+            @include linkHover;
           }
         }
       }
@@ -108,6 +101,26 @@ nav#top-nav {
           font-size: 200%;
         }
       }
+    }
+
+    // Donate
+    a.donate {
+      position: relative;
+      display: none;
+      height: 100%;
+
+      margin-left: 2rem;
+      padding: 0 1rem;
+      align-items: center;
+
+      background: $color_red;
+      color: $color_white;
+      font-family: $font_secondary;
+      font-size: 150%;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
   }
 }

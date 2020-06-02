@@ -13,6 +13,9 @@
 
             <!-- Social Media -->
             <?= social_media() ?>
+
+            <!-- Donate (only show on scroll down) -->
+            <a class="donate" href="<?= get_donation_url() ?>" target="_blank" rel="noopener noreferrer">Donate</a>
         </div>
     </div>
 </nav>
