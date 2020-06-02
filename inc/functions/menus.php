@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Supported FontAwesome icons
+ */
 $icons = array(
     'facebook' => 'facebook-f',
     'instagram' => 'instagram',
@@ -14,45 +17,72 @@ $icons = array(
     'youtube' => 'youtube'
 );
 
-function setup_menus()
+/**
+ * Fetches the menu items by passing in the menu location's registered slug rather than the slug WordPress sets
+ * Credit: https://wordpress.stackexchange.com/a/268883
+ */
+function get_menu_items_by_registered_slug($menu_slug)
+{
+    $menu_items = array();
+    if (($locations = get_nav_menu_locations()) && isset($locations[$menu_slug])) {
+        $menu = get_term($locations[$menu_slug]);
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+    }
+    return $menu_items;
+}
+
+/**
+ * Registers the menu locations for the theme
+ */
+function register_menu_locations()
 {
     register_nav_menus(array(
-        'header' => _('Header'),
-        'social_media' => _('Social Media')
+        'header' => _('Header Menu'),
+        'socials' => _('Social Media Menu')
     ));
 }
-add_action('init', 'setup_menus');
+add_action('init', 'register_menu_locations');
 
-function get_social_media()
+/**
+ * Returns an object array containing the title and url of social media menu items
+ */
+function get_social_menu_items()
 {
-    $urls = array();
-    foreach (wp_get_nav_menu_items('social-media') as $item) {
-        $obj = new ArrayObject();
-        $obj->title = strtolower($item->title);
-        $obj->url = $item->url;
+    $array = array();
+    if (has_nav_menu('socials')) {
+        foreach (get_menu_items_by_registered_slug('socials') as $item) {
+            $obj = new ArrayObject();
+            $obj->title = strtolower($item->title);
+            $obj->url = $item->url;
 
-        array_push($urls, $obj);
+            array_push($array, $obj);
+        }
     }
-    return $urls;
+    return $array;
 }
 
-function social_media()
+/**
+ * Outputs a ul HTML element containing the proper social media items and their icons.
+ */
+function get_social_media_html()
 {
     global $icons;
+    if (!has_nav_menu('socials'))
+        return null;
 
-    $ul = '<ul class="socials">';
-
-    foreach (get_social_media() as $item) {
+    $ul = '<ul class="socials-menu">';
+    foreach (get_social_menu_items() as $item) {
         $href = $item->url;
-        $fab = 'fas fa-globe';
+        $icon = 'fas fa-globe';
 
         $key = $item->title;
         if (array_key_exists($key, $icons))
-            $fab = "fab fa-{$icons[$key]}";
-
-        $ul .= "<li class='social-item'> <a class='social-link' href='{$href}' target='_blank' rel='noreferrer nosponsor'> <i class='{$fab}'></i> </a> </li>";
+            $icon = "fab fa-{$icons[$key]}";
+        $ul .= '<li class="socials-item">
+            <a href="' . $href . '" target="_blank" rel="noreferrer nosponsor">
+                <i class="' . $icon . '"></i>
+            </a>
+        </li>';
     }
-
-    $ul .= '</ul>';
-    return $ul;
+    return $ul .= '</ul>';
 }

@@ -6,13 +6,18 @@
 
         <div class="nav-items">
             <!-- Primary Menu -->
-            <?php wp_nav_menu(array(
-                'theme_location' => 'header',
-                'container_class' => 'menu-container'
-            )) ?>
+            <?php if (has_nav_menu('header')) : ?>
+                <?php wp_nav_menu(array(
+                    'theme_location' => 'header',
+                    'container_class' => 'header-menu-container',
+                    'menu_class' => 'header-menu'
+                )) ?>
+            <?php endif; ?>
 
             <!-- Social Media -->
-            <?= social_media() ?>
+            <?php if (has_nav_menu('socials')) : ?>
+                <?= get_social_media_html() ?>
+            <?php endif; ?>
 
             <!-- Donate (only show on scroll down) -->
             <a class="donate" href="<?= get_donation_url() ?>" target="_blank" rel="noopener noreferrer">Donate</a>

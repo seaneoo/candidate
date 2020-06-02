@@ -60,8 +60,8 @@ nav#top-nav {
     justify-content: flex-end;
 
     // Primary menu
-    div.menu-container {
-      ul.menu {
+    div.header-menu-container {
+      ul.header-menu {
         display: flex;
         width: auto;
 
@@ -87,11 +87,11 @@ nav#top-nav {
     }
 
     // Social Media
-    ul.socials {
+    ul.socials-menu {
       display: flex;
       margin-left: 4rem;
 
-      li.social-item {
+      li.socials-item {
         &:not(:first-of-type) {
           margin-left: 2em;
         }
