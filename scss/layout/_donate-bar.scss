@@ -3,7 +3,7 @@ div.donate-bar {
   bottom: 0;
   width: 100%;
 
-  &__btns {
+  ul.donate-bar__btns {
     display: flex;
 
     & > * {
@@ -12,6 +12,11 @@ div.donate-bar {
       &:not(:first-of-type) {
         border-left: 1px solid $color_dark_red;
       }
+    }
+
+    li a {
+      @extend a.btn;
+      @extend a.btn--red;
     }
   }
 }

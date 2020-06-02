@@ -38,7 +38,8 @@ function register_menu_locations()
 {
     register_nav_menus(array(
         'header' => _('Header Menu'),
-        'socials' => _('Social Media Menu')
+        'socials' => _('Social Media Menu'),
+        'donate' => _('Donate Menu')
     ));
 }
 add_action('init', 'register_menu_locations');

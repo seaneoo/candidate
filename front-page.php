@@ -2,17 +2,13 @@
 
 <div class="hero fp-jumbo" style="background-image: url('<?= (get_jumbo_img()) ? get_jumbo_img() : '' ?>')">
     <!-- Donate Bar -->
-    <div class="donate-bar">
-        <div class="donate-bar__btns">
-            <a class="btn btn--red" href="">$5</a>
-            <a class="btn btn--red" href="">$20.20</a>
-            <a class="btn btn--red" href="">$50</a>
-            <a class="btn btn--red" href="">$100</a>
-            <a class="btn btn--red" href="">$250</a>
-            <a class="btn btn--red" href="">$500</a>
-            <a class="btn btn--red" href="">Other</a>
-        </div>
-    </div>
+    <?php if (has_nav_menu('donate')) : ?>
+        <?php wp_nav_menu(array(
+            'theme_location' => 'donate',
+            'container_class' => 'donate-bar',
+            'menu_class' => 'donate-bar__btns'
+        )) ?>
+    <?php endif; ?>
 </div>
 
 <!-- WordPress content -->
