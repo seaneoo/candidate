@@ -10,3 +10,13 @@ body {
   background-color: $color_blue;
   color: $color_white;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font_secondary;
+  font-weight: 700;
+}
