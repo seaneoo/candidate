@@ -1,0 +1,29 @@
+footer#footer {
+  display: flex;
+  width: 100%;
+  min-height: 50vh;
+
+  padding: 4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $color_white;
+  border-top: 1px solid $color_gray;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  div.disclaimer {
+    padding: 1rem 2rem;
+    color: $color_dark_gray;
+    border: 1px solid $color_dark_gray;
+  }
+
+  span.copyright {
+    color: $color_dark_gray;
+  }
+}
