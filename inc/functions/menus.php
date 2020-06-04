@@ -38,6 +38,7 @@ function register_menu_locations()
 {
     register_nav_menus(array(
         'header' => _('Header Menu'),
+        'footer' => _('Footer Menu'),
         'socials' => _('Social Media Menu'),
         'donate' => _('Donate Menu')
     ));
