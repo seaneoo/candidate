@@ -1,11 +1,13 @@
 button.btn,
-a.btn {
+a.btn,
+input.btn {
   display: flex;
   min-width: 150px;
   padding: 1rem 0;
 
   justify-content: center;
   background-color: transparent;
+  border: 0;
   cursor: pointer;
 
   color: $color_black;
