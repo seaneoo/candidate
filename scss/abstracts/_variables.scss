@@ -5,9 +5,9 @@ $color_dark_gray: #bdbdbd;
 $color_black: #212121;
 
 $color_red: #db3349;
-$color_dark_red: #c52e42;
+$color_dark_red: #db3349;
 
-$color_blue: #002d72;
+$color_blue: #001f50;
 $color_dark_blue: #001f50;
 
 // Fonts
@@ -25,3 +25,23 @@ $breakpoints: (
 
 // z-index
 $z_header: 999;
+
+:root {
+  --white: #{$color_white};
+  --gray: #{$color_gray};
+  --dark-gray: #{$color_dark_gray};
+  --black: #{$color_black};
+  --red: #{$color_red};
+  --dark-red: #{$color_dark_red};
+  --blue: #{$color_blue};
+  // --dark-blue: #{$color_dark_blue};
+
+  --font-family-primary: #{$font_primary};
+  --font-family-secondary: #{$font_secondary};
+
+  @each $size, $px in $breakpoints {
+    --breakpoint-#{$size}: #{$px};
+  }
+
+  --z-index-header: #{$z_header};
+}
