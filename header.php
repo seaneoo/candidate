@@ -9,5 +9,6 @@
 </head>
 
 <body <?php body_class() ?>>
-    <?php include get_theme_file_path('/inc/templates/header.php') ?>
-    <main id="main" role="main">
+    <div id="site-wrapper">
+        <?php include get_theme_file_path('/inc/templates/header.php') ?>
+        <main id="main" role="main">

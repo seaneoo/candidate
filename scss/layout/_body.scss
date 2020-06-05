@@ -1,8 +1,16 @@
+body,
+html {
+  height: 100%;
+}
+
 body {
-  position: relative;
-  min-height: 100vh;
-  overflow-y: scroll;
   background: $color_red;
+}
+
+div#site-wrapper {
+  position: relative;
+  height: inherit;
+  overflow-y: auto;
 }
 
 main#main {
