@@ -1,8 +1,9 @@
 // Sets the width and height of the navbar-toggle button equal to the height of the branding
+let px = $("#nav > a.navbar-brand").outerHeight();
 $("#nav > div.navbar-sm > button.navbar-toggler").css({
-  width: $("#nav > a.navbar-brand").outerHeight(),
-  height: $("#nav > a.navbar-brand").outerHeight(),
-  flexBasis: $("#nav > a.navbar-brand").outerHeight(),
+  width: px,
+  height: px,
+  flexBasis: px,
 });
 
 // Sets the padding for the "fp-jumbo" div based on the header and donate bar heights

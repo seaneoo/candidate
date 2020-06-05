@@ -27,20 +27,3 @@
   bottom: $bottom;
   left: $left;
 }
-
-@mixin linkHover {
-  &::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 0;
-    height: 2px;
-    background: $color_red;
-    border-radius: 4px;
-    transition: width 300ms ease-in-out;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-}
