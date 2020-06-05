@@ -64,34 +64,38 @@ nav#nav {
       justify-content: initial;
       align-items: initial;
       background: transparent;
+      z-index: auto;
     }
 
-    position: absolute;
+    position: fixed;
     display: flex;
     padding: 1rem;
     overflow: hidden;
     justify-content: flex-start;
     align-items: center;
-    background: $color_white;
+    background: $color_red;
+    z-index: 9999;
 
     &.collapsed {
       display: none;
     }
 
     span.navbar-sm-close {
-      @include pos(0, 0, auto, auto);
+      @include pos(1em, 1em, auto, auto);
       @include align();
       @include query("md") {
         display: none;
       }
 
       position: absolute;
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       cursor: pointer;
+      background: $color_white;
 
       i {
-        font-size: 3em;
+        color: $color_black;
+        font-size: 4em;
       }
     }
 
@@ -100,7 +104,7 @@ nav#nav {
         display: flex;
       }
 
-      width: auto;
+      width: 100%;
       height: max-content;
 
       li.nav-item {
@@ -111,13 +115,16 @@ nav#nav {
         }
 
         a {
-          @include linkHover;
+          @include query("md") {
+            line-height: 2;
+            color: $color_black;
+            font-size: 1.5em;
+          }
 
           position: relative;
-          line-height: 2;
-          color: $color_blue;
+          color: $color_white;
           font-family: $font_secondary;
-          font-size: 150%;
+          font-size: 4em;
           font-weight: 700;
           text-decoration: none;
           letter-spacing: 0.5px;
