@@ -31,6 +31,15 @@ function get_menu_items_by_registered_slug($menu_slug)
     return $menu_items;
 }
 
+function nav_menu_item_class($classes, $item, $args)
+{
+    if (isset($args->item_class)) {
+        $classes[] = $args->item_class;
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'nav_menu_item_class', 1, 3);
+
 /**
  * Registers the menu locations for the theme
  */
@@ -72,7 +81,7 @@ function get_social_media_html()
     if (!has_nav_menu('socials'))
         return null;
 
-    $ul = '<ul class="socials-menu">';
+    $ul = '<ul class="socials-nav">';
     foreach (get_social_menu_items() as $item) {
         $href = $item->url;
         $icon = 'fas fa-globe';
@@ -80,7 +89,7 @@ function get_social_media_html()
         $key = $item->title;
         if (array_key_exists($key, $icons))
             $icon = "fab fa-{$icons[$key]}";
-        $ul .= '<li class="socials-item">
+        $ul .= '<li class="nav-item">
             <a href="' . $href . '" target="_blank" rel="noreferrer nosponsor">
                 <i class="' . $icon . '"></i>
             </a>
