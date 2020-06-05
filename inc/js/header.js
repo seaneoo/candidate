@@ -1,15 +1,19 @@
-jQuery(document).ready(($) => {
-  let y = window.pageYOffset;
-  let nav = $("#top-nav").offset().top;
-  if ($("body").hasClass("admin-bar")) nav += 32;
+const navWrapperSel = "#nav > div.navbar-nav-wrapper";
 
-  if (y >= nav && y > 0) $("body").addClass("sticky-nav");
-  $(window).scroll(function () {
-    y = window.pageYOffset;
-    if (y >= nav && y > 0) {
-      $("body").addClass("sticky-nav");
-    } else {
-      $("body").removeClass("sticky-nav");
-    }
-  });
-});
+// Toggles the "collapsed" class from the navbar-nav-wrapper div depending on the window's width
+function detectMobile() {
+  isMobile()
+    ? $(navWrapperSel).addClass("collapsed")
+    : $(navWrapperSel).removeClass("collapsed");
+}
+$(window).ready(detectMobile);
+$(window).resize(detectMobile);
+
+// Show or hide the navbar-nav-wrapper div
+function toggleNav() {
+  if (isMobile()) {
+    $(navWrapperSel).hasClass("collapsed")
+      ? $(navWrapperSel).removeClass("collapsed") // Show
+      : $(navWrapperSel).addClass("collapsed"); // Hide
+  }
+}

@@ -1,7 +1,12 @@
 div.donate-bar {
   position: absolute;
   bottom: 0;
+  display: none;
   width: 100%;
+
+  @include query("md") {
+    display: block;
+  }
 
   ul.donate-bar__btns {
     display: flex;
